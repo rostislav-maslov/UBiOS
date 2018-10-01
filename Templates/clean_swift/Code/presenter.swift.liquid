@@ -1,0 +1,39 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class {{ module_info.name }}Presenter: {{ module_info.name }}PresenterInput {
+
+    weak var viewController: {{ module_info.name }}ViewControllerInput!
+
+    required init(viewController: {{ module_info.name }}ViewController) {
+        self.viewController = viewController
+    }
+
+    func presentSomething(response: {{ module_info.name }}.Something.Response) {
+        var viewModel: {{ module_info.name }}.Something.ViewModel
+
+        switch response.result {
+        case let .failure(error):
+            viewModel = {{ module_info.name }}.Something.ViewModel(state: .error(message: error))
+        case let .success(result):
+            if let items = result.itemsArray {
+                if items.isEmpty {
+                    viewModel = {{ module_info.name }}.Something.ViewModel(state: .emptyResult)
+                } else {
+                    var anyViewModel = {{ module_info.name }}ViewModel()
+                    // TODO: - Map ViewModel
+                    // ...
+                    viewModel = {{ module_info.name }}.Something.ViewModel(state: .result(anyViewModel))
+                }
+            }
+        }
+        viewController.displaySomething(viewModel: viewModel)
+    }
+}

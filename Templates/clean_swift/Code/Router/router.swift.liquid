@@ -1,0 +1,29 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+/// Класс, ответственный за роутинг между экранами
+class {{ module_info.name }}Router: {{ module_info.name }}RouterProtocol {
+
+    var dataStoresList: /*App name*/DataStoresList
+
+    func routeTo/*AnyViewController*/(fromVc: {{ module_info.name }}ViewController) {
+        // Осуществить добавление ViewController в stack
+        // ...
+
+        // При необходимости осуществить трансфер данных
+    }
+
+
+
+
+    init(dataStoresList: /*App name*/DataStoresList) {
+        self.dataStoresList = dataStoresList
+    }
+}

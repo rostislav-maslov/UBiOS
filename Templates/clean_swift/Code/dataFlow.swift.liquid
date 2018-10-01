@@ -1,0 +1,39 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+enum {{ module_info.name }} {
+    // MARK: Use cases
+    enum Something {
+        struct Request {
+        }
+
+        struct Response {
+            var result: {{ module_info.name }}.RequestResult
+        }
+
+        struct ViewModel {
+            var state: ViewControllerState
+        }
+    }
+
+    enum ViewControllerState {
+        case loading
+        case result({{ module_info.name }}ViewModel)
+        case emptyResult
+        case error(message: String)
+    }
+
+    enum RequestResult {
+        case failure(String)
+        case success({{ module_info.name }}Model)
+    }
+}
+
+

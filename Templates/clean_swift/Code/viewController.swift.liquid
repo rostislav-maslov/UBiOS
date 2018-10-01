@@ -1,0 +1,118 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+class {{ module_info.name }}ViewController: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+
+    let tableViewDataSource = {{ module_info.name }}TableViewDataSource()
+
+    let configurator = {{ module_info.name }}Configurator()
+
+    var interactor: {{ module_info.name }}InteractorInput!
+    var router: {{ module_info.name }}RouterProtocol!
+
+
+    var state = {{ module_info.name }}.ViewControllerState.loading
+
+
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        configurator.configureModule(viewController: self)
+    }
+
+    // MARK: Life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        display(newState: state)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+}
+
+//MARK: - {{ module_info.name }}ViewControllerInput
+extension {{ module_info.name }}ViewController: {{ module_info.name }}ViewControllerInput {
+    func displaySomething(viewModel: {{ module_info.name }}.Something.ViewModel) {
+        display(newState: viewModel.state)
+    }
+
+    func display(newState: {{ module_info.name }}.ViewControllerState) {
+        state = newState
+        switch state {
+        case .loading:
+            print("loading...")
+        case let .error(message):
+            print("error \(message)")
+        case let .result(items):
+            print("result: \(items)")
+        case .emptyResult:
+            print("empty result")
+        }
+    }
+}
+
+//MARK: - {{ module_info.name }}ViewInput
+extension {{ module_info.name }}ViewController: {{ module_info.name }}ViewInput {
+
+    func showTable() {
+        // TODO: - Отображение tableView
+    }
+
+    func displayNoResult() {
+        // TODO: - Отображение отсутствия результата
+    }
+
+    func displayError(error: String) {
+        // TODO: - Отображение ошибки
+    }
+
+    func displayConnectionError() {
+        // TODO: - Отображение ошибки соединения
+    }
+
+    func hideConnectionError() {
+        // TODO: - Скрыть отображение ошибки соединения
+    }
+
+    func showProgress() {
+        // TODO: - Показать прогресс-бар
+    }
+
+    func hideProgress() {
+        // TODO: - Скрыть прогресс-бар
+    }
+
+    func updateTableViewData(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        showTable()
+        tableView.tableFooterView = nil
+        tableView.tableHeaderView = nil
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+        tableView.reloadData()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

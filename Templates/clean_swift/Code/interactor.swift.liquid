@@ -1,0 +1,35 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+/// Класс для описания бизнес-логики модуля {{ module_info.name }}
+class {{ module_info.name }}Interactor: {{ module_info.name }}InteractorInput {
+
+    let presenter: {{ module_info.name }}PresenterInput
+    let dataProvider: {{ module_info.name }}DataProviderInput
+
+    required init(dataProvider: {{ module_info.name }}DataProvider, presenter: {{ module_info.name }}Presenter) {
+        self.dataProvider = dataProvider
+        self.presenter = presenter
+    }
+
+    func doSomething(request: {{ module_info.name }}.Something.Request) {
+        dataProvider.getSomething { (model, error) in
+            let result: {{ module_info.name }}.RequestResult
+            if let model = model {
+                result = .success(model)
+            } else if let error = error {
+                result = .failure(error)
+            } else {
+                result = .failure("Ошибка получения данных")
+            }
+            self.presenter.presentSomething(response: {{ module_info.name }}.Something.Response(result: result))
+        }
+    }
+}

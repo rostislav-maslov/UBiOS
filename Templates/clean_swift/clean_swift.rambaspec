@@ -1,0 +1,59 @@
+# Template information section
+name: "clean_swift"
+summary: "Clean Swift module template with UIViewController playing as a View."
+author: "Levan Chikvaidze"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# Router layer
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+
+# Configure layer
+- {name: Router/Configurator.swift, path: Code/Router/configurator.swift.liquid}
+
+# Models layer
+- {name: Models/Model.swift, path: Code/Models/model.swift.liquid}
+- {name: Models/ViewModel.swift, path: Code/Models/viewModel.swift.liquid}
+
+# DataSources
+- {name: DataProvider/DataSources/DataStore.swift, path: Code/DataProvider/DataSources/dataStore.swift.liquid}
+- {name: DataProvider/DataSources/APIServiceProtocol.swift, path: Code/DataProvider/DataSources/service.swift.liquid}
+
+# TableViewDataSource
+- {name: Submodules/TableViewDataSource/TableViewDataSource.swift, path: Code/Submodules/TableViewDataSource/tableViewDataSource.swift.liquid}
+
+# DataProvider layer
+- {name: DataProvider/DataProvider.swift, path: Code/DataProvider/dataProvider.swift.liquid}
+
+# View layer
+- {name: ViewController.swift, path: Code/viewcontroller.swift.liquid}
+
+# Interactor layer
+- {name: Interactor.swift, path: Code/interactor.swift.liquid}
+
+# Presenter layer
+- {name: Presenter.swift, path: Code/presenter.swift.liquid}
+
+# DataFlow
+- {name: DataFlow.swift, path: Code/dataFlow.swift.liquid}
+
+# Interfaces
+- {name: Protocols.swift, path: Code/protocols.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# View tests
+- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+
+# Interactor tests
+- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
+
+# Presenter tests
+- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
+
+# Router tests
+- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}
