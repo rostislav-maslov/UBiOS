@@ -45,15 +45,3 @@ code_files:
 
 # The declarations for test files
 test_files:
-
-# View tests
-- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
-
-# Interactor tests
-- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
-
-# Presenter tests
-- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
-
-# Router tests
-- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}
