@@ -9,7 +9,7 @@
 import UIKit
 
 class BottomSheetViewController: UIViewController {
-
+    
     @IBOutlet weak var heightDragViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomDragViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
@@ -32,13 +32,13 @@ class BottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        
-        bottomDragViewConstraint.constant = -view.frame.height
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        
+        //анимация появления вью снизу
         self.bottomDragViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
@@ -49,12 +49,20 @@ class BottomSheetViewController: UIViewController {
     @IBAction func dismissButtonDidTouch(_ sender: Any) {
         self.remove()
     }
-
+    
     private func setupView() {
-        view.layoutIfNeeded()
+        
         panGuest = UIPanGestureRecognizer(target: self, action: #selector(draggView))
         dragView.addGestureRecognizer(panGuest)
         
+        customizeDragView()
+        switchCases()
+        
+        //прячем вью вниз, чтобы отбразить появление снизу
+        bottomDragViewConstraint.constant = -view.frame.height
+    }
+    
+    private func customizeDragView() {
         if Device.IS_IPHONE_X || Device.IS_IPHONE_XS_MAX {
             bottomContainerConstraint.constant = 25
         } else {
@@ -68,18 +76,15 @@ class BottomSheetViewController: UIViewController {
         rectShape.position = dragView.center
         rectShape.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topRight , .topLeft ], cornerRadii: CGSize(width: 8, height: 8)).cgPath
         dragView.layer.mask = rectShape
-        
+    }
+    
+    private func switchCases() {
         switch containerType {
         case .zoneNotAvailible:
             setupZoneNotAvailible()
         case .paidDelivery:
             setupPaidDelivery(costOfDelivery)
         }
-        
-        //view.layoutIfNeeded()
-        
-        debugPrint(dragView.frame, containerView.frame)
-        
     }
     
     //MARK: - Cases
@@ -87,6 +92,7 @@ class BottomSheetViewController: UIViewController {
     private func setupZoneNotAvailible() {
         let zoneNotAvailibleView = (Bundle.main.loadNibNamed("ZoneNotAvailibleBottomSheetView", owner: nil, options: nil)?.first as! ZoneNotAvailibleBottomSheetView)
         heightDragViewConstraint.constant = zoneNotAvailibleView.height
+        zoneNotAvailibleView.frame.size.width = UIScreen.main.bounds.width
         containerView.addSubview(zoneNotAvailibleView)
         
     }
@@ -95,12 +101,32 @@ class BottomSheetViewController: UIViewController {
         let paidDeliveryView = (Bundle.main.loadNibNamed("PaidDeliveryBottomSheetView", owner: nil, options: nil)?.first as! PaidDeliveryBottomSheetView)
         paidDeliveryView.deliveryPriceLabel.text = costOfDelivery + "₽"
         heightDragViewConstraint.constant = paidDeliveryView.height
+        paidDeliveryView.frame.size.width = UIScreen.main.bounds.width
         containerView.addSubview(paidDeliveryView)
         
     }
     
     
     //MARK: - Helpers
+    
+    private func dragAnimation(_ panView: UIView) {
+        //50 dismissible point
+        UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
+                if self.dragView.center.y > y + 50 {
+                    panView.center.y = y + self.dragView.frame.height
+                    self.view.backgroundColor = .clear
+                } else {
+                    panView.center.y = y
+                }
+            })
+            
+        }, completion: { _ in
+            if self.dragView.center.y > y + 50 {
+                self.remove()
+            }
+        })
+    }
     
     @objc func draggView() {
         let translation = panGuest.translation(in: dragView)
@@ -121,21 +147,7 @@ class BottomSheetViewController: UIViewController {
             }
             
             if panGuest.state == .ended {
-                UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubic, animations: {
-                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
-                        if self.dragView.center.y > y + 50 {
-                            panView.center.y = y + self.dragView.frame.height + 10
-                            self.view.backgroundColor = .clear
-                        } else {
-                            panView.center.y = y
-                        }
-                    })
-                    
-                }, completion: { _ in
-                    if self.dragView.center.y > y + 50 {
-                        self.remove()
-                    }
-                })
+                dragAnimation(panView)
             }
         }
     }
