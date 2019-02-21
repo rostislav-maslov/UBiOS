@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+        <array key="SFUIDisplay-Medium.otf">
+            <string>SFUIDisplay-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZoneNotAvailibleBottomSheetView" customModule="SushiVesla" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес не входит в зону доставки" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xk-dJ-AOB">
+                    <rect key="frame" x="20" y="30" width="335" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="lf9-TV-DlB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К сожалению, мы пока не доставляем на этот адрес😔" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPe-du-SFS">
+                    <rect key="frame" x="15" y="96" width="345" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="7pQ-CE-DXC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGb-h4-U1K">
+                    <rect key="frame" x="8" y="163" width="359" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="CNb-Y4-1Re"/>
+                    </constraints>
+                    <state key="normal" title="Я ХОЧУ ЗАБРАТЬ САМ">
+                        <color key="titleColor" red="0.89411765340000005" green="0.01176470611" blue="0.15294118230000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="ownButtonDidTouch:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZVh-u5-4l0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0Xk-dJ-AOB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="447-PZ-12F"/>
+                <constraint firstItem="FPe-du-SFS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="7f4-y8-YxH"/>
+                <constraint firstItem="bGb-h4-U1K" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="BST-hQ-Ise"/>
+                <constraint firstItem="0Xk-dJ-AOB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Co9-Zw-7pw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FPe-du-SFS" secondAttribute="trailing" constant="15" id="Wfg-VF-SKT"/>
+                <constraint firstItem="FPe-du-SFS" firstAttribute="top" secondItem="0Xk-dJ-AOB" secondAttribute="bottom" constant="14" id="eLQ-9b-ZB1"/>
+                <constraint firstItem="bGb-h4-U1K" firstAttribute="top" secondItem="FPe-du-SFS" secondAttribute="bottom" constant="17" id="vyr-lR-XX1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Xk-dJ-AOB" secondAttribute="trailing" constant="20" id="wsZ-91-SdD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bGb-h4-U1K" secondAttribute="trailing" constant="8" id="zCs-5K-4Q6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="ownButton" destination="bGb-h4-U1K" id="giA-Cg-XJe"/>
+            </connections>
+        </view>
+    </objects>
+</document>
