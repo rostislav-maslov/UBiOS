@@ -109,7 +109,7 @@ class BottomSheetViewController: UIViewController {
     
     //MARK: - Helpers
     
-    private func dragAnimation(_ panView: UIView) {
+    private func dragAnimation(_ panView: UIView, _ y: CGFloat) {
         //50 dismissible point
         UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: .calculationModeCubic, animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3, animations: {
@@ -147,7 +147,7 @@ class BottomSheetViewController: UIViewController {
             }
             
             if panGuest.state == .ended {
-                dragAnimation(panView)
+                dragAnimation(panView, y)
             }
         }
     }
