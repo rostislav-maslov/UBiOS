@@ -20,13 +20,13 @@ extension UIViewController {
         view.addSubview(child.view)
         
         //для правильного отображения на разных экранах
+        child.view.frame = view.bounds
         if #available(iOS 11.0, *) {
-            child.view.frame = view.bounds
         } else {
-            child.view.frame = view.bounds
-            child.view.frame.origin.y -= UIApplication.shared.statusBarFrame.height
+            if !(navigationController?.navigationBar.isTranslucent ?? true) {
+                child.view.frame.origin.y -= UIApplication.shared.statusBarFrame.height
+            }
         }
-        child.view.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin]
         
         child.didMove(toParent: self)
     }
