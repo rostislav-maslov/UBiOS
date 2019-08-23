@@ -1,47 +1,36 @@
 # Template information section
 name: "clean_swift"
 summary: "Clean Swift module template with UIViewController playing as a View."
-author: "Levan Chikvaidze"
-version: "0.1.0"
+author: "Levan Chikvaidze & Nikita Nikitsky"
+version: "0.2.0"
 license: "MIT"
 
 # The declarations for code files
 
 code_files:
-# Router layer
-- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
 
-# Configure layer
-- {name: Router/Configurator.swift, path: Code/Router/configurator.swift.liquid}
-
-# Models layer
-- {name: Models/Model.swift, path: Code/Models/model.swift.liquid}
-- {name: Models/ViewModel.swift, path: Code/Models/viewModel.swift.liquid}
-
-# DataSources
-- {name: DataProvider/DataSources/DataStore.swift, path: Code/DataProvider/DataSources/dataStore.swift.liquid}
-- {name: DataProvider/DataSources/APIServiceProtocol.swift, path: Code/DataProvider/DataSources/service.swift.liquid}
-
-# TableViewDataSource
-- {name: Submodules/TableViewDataSource/TableViewDataSource.swift, path: Code/Submodules/TableViewDataSource/tableViewDataSource.swift.liquid}
-
-# DataProvider layer
-- {name: DataProvider/DataProvider.swift, path: Code/DataProvider/dataProvider.swift.liquid}
-
-# View layer
-- {name: ViewController.swift, path: Code/viewcontroller.swift.liquid}
+# Controller layer
+- { name: Controller/ViewController.swift, path: Code/Controller/viewController.swift.liquid }
+- { name: Controller/ViewControllerImpl.swift, path: Code/Controller/viewControllerImpl.swift.liquid }
+- { name: Controller/ViewControllerListener.swift, path: Code/Controller/viewControllerListener.swift.liquid }
 
 # Interactor layer
-- {name: Interactor.swift, path: Code/interactor.swift.liquid}
+- { name: Interactor/DataStore/DataStore.swift, path: Code/Interactor/DataStore/dataStore.swift.liquid }
+- { name: Interactor/DataStore/DataStoreImpl.swift, path: Code/Interactor/DataStore/dataStoreImpl.swift.liquid }
+- { name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid }
+- { name: Interactor/InteractorImpl.swift, path: Code/Interactor/interactorImpl.swift.liquid }
+
+# Models layer
+- { name: Models/View/SomeViewModel.swift, path: Code/Models/View/someViewModel.swift.liquid }
+- { name: Models/View/ViewModel.swift, path: Code/Models/View/viewModel.swift.liquid }
+
+# Module layer
+- { name: Module/Module.swift, path: Code/Module/module.swift.liquid }
 
 # Presenter layer
-- {name: Presenter.swift, path: Code/presenter.swift.liquid}
+- { name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid }
+- { name: Presenter/PresenterImpl.swift, path: Code/Presenter/presenterImpl.swift.liquid }
 
-# DataFlow
-- {name: DataFlow.swift, path: Code/dataFlow.swift.liquid}
-
-# Interfaces
-- {name: Protocols.swift, path: Code/protocols.swift.liquid}
-
-# The declarations for test files
-test_files:
+# Router layer
+- { name: Router/Router.swift, path: Code/Router/router.swift.liquid }
+- { name: Router/RouterImpl.swift, path: Code/Router/routerImpl.swift.liquid }

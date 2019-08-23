@@ -1,0 +1,22 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+/// Возможные состояния для представления модуля {{ module_info.name }}.
+public enum {{ module_info.name }}ViewControllerState {
+    case some(viewModel: {{ module_info.name }}SomeViewModel)
+    case error(message: String)
+
+    // TODO: - Добавить недостающие состояния для пердставления модуля {{ module_info.name }}.
+    
+}
+
+/// Интерфейс контроллера представления модуля {{ module_info.name }}.
+public protocol {{ module_info.name }}ViewController: AnyObject {
+
+    func displayState(_: {{ module_info.name }}ViewControllerState)
+
+}

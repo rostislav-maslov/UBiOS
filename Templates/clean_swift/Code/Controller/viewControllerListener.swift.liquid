@@ -1,0 +1,19 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+/// Возможные события для представления модуля {{ module_info.name }}.
+public enum {{ module_info.name }}ViewControllerEvent {
+    case didLoadView
+    // TODO: - Добавлить недостающие события контроллера представления модуля {{ module_info.name }}.
+}
+
+/// Интерфейс слушателя событий контроллера представления модуля {{ module_info.name }}.
+public protocol {{ module_info.name }}ViewControllerListener {
+    
+    func didEvent(_: {{ module_info.name }}ViewControllerEvent)
+
+}

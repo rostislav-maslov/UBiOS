@@ -1,0 +1,25 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+/// Класс с реализацией роутера модуля {{ module_info.name }}.
+public class {{ module_info.name }}RouterImpl {
+
+    /** Модуль {{ module_info.name }}. */
+    weak var module: {{ module_info.name }}Module?
+
+}
+
+// MARK: - Реализация роутера модуля {{ module_info.name }}.
+extension {{ module_info.name }}RouterImpl: {{ module_info.name }}Router {
+
+    func close() {
+        module?.viewController.dismiss(animated: true)
+    }
+
+}

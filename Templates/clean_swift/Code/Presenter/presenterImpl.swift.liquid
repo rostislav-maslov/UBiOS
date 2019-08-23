@@ -1,0 +1,59 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+/// Класс с реализацией презентера модуля {{ module_info.name }}.
+class {{ module_info.name }}PresenterImpl {
+
+    /** Интерактор модуля {{ module_info.name }}. */
+    private let interactor: {{ module_info.name }}Interactor
+
+    /** Роутер модуля {{ module_info.name }}. */
+    private let router: {{ module_info.name }}Router
+
+    /** Контроллер представления модуля {{ module_info.name }}. */
+    weak var viewController: {{ module_info.name }}ViewController?
+
+    /** Слушатели модуля {{ module_info.name }} */
+    private var listeners: [ModuleEventListener] = []
+
+    init(
+        interactor: {{ module_info.name }}Interactor,
+        router: {{ module_info.name }}Router
+    ) {
+        self.interactor = interactor
+        self.router = router
+    }
+
+}
+
+// MARK: - Реализация презентера модуля {{ module_info.name }}.
+extension {{ module_info.name }}PresenterImpl: {{ module_info.name }}Presenter {
+
+    func presentSome() {}
+
+}
+
+// MARK: - Реализация слушателя контроллера представления модуля {{ module_info.name }}.
+extension {{ module_info.name }}PresenterImpl: {{ module_info.name }}ViewControllerListener {
+
+    func didEvent(_: {{ module_info.name }}ViewControllerEvent) {}
+
+}
+
+// MARK: - реализация слушателя событий модуля {{ module_info.name }}.
+extension {{ module_info.name }}PresenterImpl: ModuleEventListener {
+
+    func didEvent(_ event: ModuleEvent) {}
+
+}
+
+// MARK: - Реализация вещателя событий модуля {{ module_info.name }}.
+extension {{ module_info.name }}PresenterImpl: ModuleEventSender {
+
+    func addListener(_ listener: ModuleEventListener) {}
+
+}

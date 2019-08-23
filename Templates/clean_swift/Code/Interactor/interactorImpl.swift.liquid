@@ -1,0 +1,30 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+/// Класс с реализацией интерактора модуля {{ module_info.name }}.
+class {{ module_info.name }}InteractorImpl {
+    
+    /** Хранилище данных модуля {{ module_info.name }}. */
+    private let dataStore: {{ module_info.name }}DataStore
+
+    /** Презентер модуля {{ module_info.name }}. */
+    weak var presenter: {{ module_info.name }}Presenter?
+
+    init(
+        dataStore: {{ module_info.name }}DataStore
+    ) {
+        self.dataStore = dataStore
+    }
+
+}
+
+// MARK: - Реализация интерактора модуля {{ module_info.name }}.
+extension {{ module_info.name }}InteractorImpl: {{ module_info.name }}Interactor {
+
+    public func doSomething() {}
+
+}

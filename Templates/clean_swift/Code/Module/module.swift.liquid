@@ -1,0 +1,30 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+/// Возможные события модуля {{ module_info.name }}.
+public enum {{ module_info.name }}ModuleEvent: ModuleEvent {
+    // TODO: - Добавить недостающие события модуля {{ module_info.name }}.
+}
+
+/// Набор начальных параметров модуля {{ module_info.name }}.
+public struct {{ module_info.name }}Parameters {}
+
+/// Интерфейс с описанием модуля {{ module_info.name }}.
+public protocol {{ module_info.name }}Module: AnyObject {
+
+    /** View Controller модуля {{ module_info.name }}. */
+    var viewController: UIViewController { get }
+
+    /** Слушатель событий модуля {{ module_info.name }}. */
+    var listener: ModuleEventListener { get }
+
+    /** Вещатель событий модуля {{ module_info.name }}. */
+    var sender: ModuleEventSender { get } 
+
+}
